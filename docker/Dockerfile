@@ -2,6 +2,7 @@ FROM rocker/shiny
 
 # Add new packages here (in alphabetical order)
 RUN install2.r --error \
+  dplyr \
   drat
 
 RUN rm -rf /srv/shiny-server/index.hml /src/shiny-server/[0-9]+_*
