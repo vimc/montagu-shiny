@@ -2,10 +2,10 @@
 
 ## Workflow & design
 
-* container here is built on teamcity
-* add this into the montagu constellation, exposing the ports 3838 for now (eventually hide this and run via the proxy)
-* orderly builds apps; these will be self contained directories `shiny/` within a report
-* _something_ copies these over into the shiny volume as `/src/shiny-server/apps/<report-name>/<id>` and set up a symlink to the latest
+* the container here is built on teamcity
+* this container is then run as part of the montagu constellation, exposing the port 3838 for now (eventually hide this and run via the proxy or the reporting api because this is not authenticated and anyone on the network could just access it)
+* orderly builds shiny apps; these will be self contained directories (e.g., `shiny/`) within a report.  Mostly this will be concerned with saving out data via `save` to be loaded within the app with `load`.
+* orderly copies the generated reports over into the shiny volume (which is also mounted into the orderly container) based on a bit of metadata `shiny.yml` in the orderly root.
 
 ## Deploy the standalone container for testing
 
