@@ -51,6 +51,7 @@ EXPOSE 80
 WORKDIR /srv
 
 COPY Caddyfile /etc/Caddyfile
+RUN touch /public_key.pem
 
 ENTRYPOINT ["/usr/bin/caddy"]
 CMD ["--conf", "/etc/Caddyfile", "--log", "stdout"]
