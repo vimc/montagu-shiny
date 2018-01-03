@@ -18,14 +18,3 @@ jwt {
   # allow roles */user,*/reports-reviewer,*/reports-reader
   publickey /public_key.pem
 }
-
-# Alternative approach here:
-# https://github.com/ar0ch/nthi_project/wiki/Deploying-an-Rshiny-app-behind-Caddy
-# proxy /websocket/ http://127.0.0.1:3838 {
-#     websocket
-# }
-# proxy / http://montagu-shiny:3838 {
-#     proxy_header Host {host}
-#     proxy_header X-Real-IP {remote}
-#     proxy_header X-Forwarded-Proto {scheme}
-#}
