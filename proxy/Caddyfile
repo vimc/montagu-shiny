@@ -17,4 +17,5 @@ jwt {
   # This will work for Rich to login, but is obviously not ideal!
   # allow roles */user,*/reports-reviewer,*/reports-reader
   publickey /public_key.pem
+  allowroot
 }
