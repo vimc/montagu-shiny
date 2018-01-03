@@ -19,11 +19,9 @@ openssl rsa -pubin -in public_key.der -inform DER -outform PEM
 PUBLIC_KEY=$(cat public_key.pem)
 docker run --rm --name montagu-shiny-proxy \
        -p 1080:80 \
-       -v ${PWD}/Caddyfile:/etc/Caddyfile \
-       -v ${PWD}/public_key.pem:/public_key.pem \
        -e "JWT_PUBLIC_KEY=$PUBLIC_KEY" \
        --network=testing \
-       montagu-shiny-proxy
+       docker.montagu.dide.ic.ac.uk:5000/montagu-shiny-proxy:i1135_proxy
 
 # Open https://support.montagu.dide.ic.ac.uk:11443/reports/ and login if needed
 #
