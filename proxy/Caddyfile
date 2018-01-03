@@ -10,6 +10,14 @@ proxy / http://montagu-shiny:3838 {
     transparent
 }
 
+# Secure with webtoken
+jwt {
+  path /
+  # This will work for Rich to login, but is obviously not ideal!
+  # allow roles */user,*/reports-reviewer,*/reports-reader
+  publickey /public_key.pem
+}
+
 # Alternative approach here:
 # https://github.com/ar0ch/nthi_project/wiki/Deploying-an-Rshiny-app-behind-Caddy
 # proxy /websocket/ http://127.0.0.1:3838 {
