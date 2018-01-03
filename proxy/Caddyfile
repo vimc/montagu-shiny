@@ -6,7 +6,7 @@ errors /var/log/caddy_errors.log
 log    /var/log/caddy_log.log
 
 # NOTE: hard-coding a name for the container up here
-proxy / http://montagu-shiny:3838 {
+proxy / http://shiny:3838 {
     transparent
     websocket
 }
