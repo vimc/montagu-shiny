@@ -1,0 +1,22 @@
+# Binding explicitly to localhost:80 will prevent caddy setting up https
+localhost:80
+
+# Super basic logging
+errors /var/log/caddy_errors.log
+log    /var/log/caddy_log.log
+
+# NOTE: hard-coding a name for the container up here
+proxy / http://montagu-shiny:3838 {
+    transparent
+}
+
+# Alternative approach here:
+# https://github.com/ar0ch/nthi_project/wiki/Deploying-an-Rshiny-app-behind-Caddy
+# proxy /websocket/ http://127.0.0.1:3838 {
+#     websocket
+# }
+# proxy / http://montagu-shiny:3838 {
+#     proxy_header Host {host}
+#     proxy_header X-Real-IP {remote}
+#     proxy_header X-Forwarded-Proto {scheme}
+#}
