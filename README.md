@@ -34,4 +34,14 @@ Within `nginx/` run
 docker-compose up
 ```
 
-If the jwt validation bits are not commented out there's more work to do.
+Open http://localhost:80/shiny and you should see the shiny page.
+
+Then try http://localhost:80/shiny/sample-apps/ and you should get a `401 Unauthorized` error - the page is protected by caddy's jwt validation.
+
+Then press F12 (Chrome) to open developer console and run in the console:
+
+```
+document.cookie="jwt_token=eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ0ZXN0LnVzZXIiLCJwZXJtaXNzaW9ucyI6IipcL2Nhbi1sb2dpbiwqXC9jb3VudHJpZXMucmVhZCwqXC9kZW1vZ3JhcGhpY3MucmVhZCwqXC9lc3RpbWF0ZXMucmVhZCwqXC9tb2RlbGxpbmctZ3JvdXBzLnJlYWQsKlwvbW9kZWxzLnJlYWQsKlwvcmVzcG9uc2liaWxpdGllcy5yZWFkLCpcL3NjZW5hcmlvcy5yZWFkLCpcL3RvdWNoc3RvbmVzLnJlYWQsKlwvdXNlcnMucmVhZCwqXC9yZXBvcnRzLnJlYWQsKlwvcmVwb3J0cy5yZXZpZXcsKlwvcmVwb3J0cy5ydW4iLCJyb2xlcyI6IipcL3VzZXIsKlwvcmVwb3J0cy1yZXZpZXdlciIsImlzcyI6InZhY2NpbmVpbXBhY3Qub3JnIiwiZXhwIjoxNTE1MDg2MjY3fQ.UtkrLZ2ME0-ux2FhAgQxiQGeadWJDhZjMgOn5yiw0tVk-DLwgRR0tssadUgesBJPc3SaS0Y11k7pCChZ70QtbTnSca5YW-sBivJc1cBtc5doB6PPkRTVk3QjJN8Rpsogp5YdRmoF-UEPfAPn9ozZfYHv-ujUr1CHoXkOTefo9glIOUvQA382q_84rt2SuUNWgQuIWd4B2DE_xftgLnJ7HwCdZtB7YXNoche2biTuWWymHhIk6mC-9QsKw3z8zYlhDNIezEhUz-NKaV6bJIXbgG6uvCYibNVQz0gTVZiUHQq-fukvXL9nbZaUlWsAAJdtoQvntiHuELqXuYX86yIF3Q"
+```
+
+This sets a cookie that caddy can validate with the public key that is mounted into the container.
