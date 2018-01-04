@@ -1,4 +1,5 @@
-# This will prevent tls
+# Bind to port 80 only so that we don't get https set up
+:80
 tls off
 
 # Super basic logging
