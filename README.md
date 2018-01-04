@@ -31,7 +31,9 @@ Within `nginx/` run
 
 ```
 ./build.sh
-docker-compose up
+docker pull docker.montagu.dide.ic.ac.uk:5000/montagu-shiny:i1135_proxy
+docker pull docker.montagu.dide.ic.ac.uk:5000/montagu-shiny-proxy:i1135_proxy
+docker-compose up --force-recreate
 ```
 
 Open http://localhost:80/shiny and you should see the shiny page.
