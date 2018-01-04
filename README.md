@@ -16,3 +16,22 @@ docker run -d --rm --name montagu-shiny \
   -v montagu_shiny_volume:/srv/shiny-server/apps \
   docker.montagu.dide.ic.ac.uk:5000/montagu-shiny:i1135
 ```
+
+## Proxy hell
+
+This repo mimics most of the setup in montagu where we have:
+
+* shiny server running as `shiny` on `3838`
+* caddy proxying and doing jwt validation as `shiny_proxy` on `80`
+* nginx doing the world-facing proxying as `proxy` on `80`
+
+Caddy is only required because of the jwt validation, which nginx does not support in the free version.
+
+Within `nginx/` run
+
+```
+./build.sh
+docker-compose up
+```
+
+If the jwt validation bits are not commented out there's more work to do.
