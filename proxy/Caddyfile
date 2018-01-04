@@ -1,5 +1,5 @@
-# Binding explicitly to localhost:80 will prevent caddy setting up https
-localhost:80
+# This will prevent tls
+tls off
 
 # Super basic logging
 errors /var/log/caddy_errors.log
