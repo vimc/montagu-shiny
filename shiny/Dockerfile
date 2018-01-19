@@ -7,4 +7,4 @@ RUN install2.r --error \
 
 RUN rm -rf /srv/shiny-server/index.hml /srv/shiny-server/[01]*
 
-COPY index.html /srv/shiny-server
+COPY index.html /srv/shiny-server/index.html

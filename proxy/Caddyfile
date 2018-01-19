@@ -1,0 +1,29 @@
+# Bind to port 80 only so that we don't get https set up
+:80
+tls off
+
+# Super basic logging
+errors /var/log/caddy_errors.log
+log    /var/log/caddy_log.log
+
+# NOTE: hard-coding a name for the container up here
+proxy / http://shiny:3838 {
+    transparent
+    websocket
+}
+
+# Secure with webtoken
+jwt {
+    path /
+    # This will work for Rich to login, but is obviously not ideal!
+    #
+    # allow roles */user,*/reports-reviewer,*/reports-reader
+    #
+    # With this commented out, it will allow any user that is
+    # successfully logged in (and with the cookie/header set)
+    # regardless of the role that they have.  Once VIMC-1260 is
+    # implemented this can be done properly.
+
+    publickey /public_key.pem
+    allowroot
+}

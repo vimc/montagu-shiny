@@ -1,0 +1,12 @@
+version: '2'
+services:
+  shiny:
+    image: docker.montagu.dide.ic.ac.uk:5000/montagu-shiny:i1135_proxy
+  shiny_proxy:
+    image: docker.montagu.dide.ic.ac.uk:5000/montagu-shiny-proxy:i1135_proxy
+    volumes:
+      - ./public_key.pem:/public_key.pem
+  proxy:
+    image: docker.montagu.dide.ic.ac.uk:5000/montagu-shiny-reverse-proxy:i1135_proxy
+    ports:
+      - "80:80"
