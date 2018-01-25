@@ -31,8 +31,9 @@ Within `nginx/` run
 
 ```
 ./build.sh
-docker pull docker.montagu.dide.ic.ac.uk:5000/montagu-shiny:i1135_proxy
-docker pull docker.montagu.dide.ic.ac.uk:5000/montagu-shiny-proxy:i1135_proxy
+export GIT_BRANCH_TAG=$(git symbolic-ref --short HEAD)
+docker pull docker.montagu.dide.ic.ac.uk:5000/montagu-shiny:${GIT_BRANCH_TAG}
+docker pull docker.montagu.dide.ic.ac.uk:5000/montagu-shiny-proxy:${GIT_BRANCH_TAG}
 docker-compose up --force-recreate
 ```
 
